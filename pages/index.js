@@ -1,4 +1,5 @@
 import Head from "next/head";
+import './sandbox/sandbox_styles.css';
 
 export default function Home() {
   return (

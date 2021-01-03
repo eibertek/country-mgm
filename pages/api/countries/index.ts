@@ -3,6 +3,7 @@ import Axios, { AxiosResponse } from 'axios';
 export type Country = {
     name: string;
     alpha3Code: string;
+    code: string;
     currencies: Array<any>;
 };
 export default async (req, res) => {

@@ -10,19 +10,22 @@ export const country:Country = {
 }
 
 
-export const citizens = [];
-
-for (let index = 0; index < 1500; index++) {
-    const randomNumber = (isNeg=true) => {
-        let rndNumber = Math.floor(Math.random()*100);
-        return isNeg ? rndNumber * (Math.floor(Math.random()*10)%2 ? 1:-1) : rndNumber; 
+export const setCitizens = (amount, country) => {
+    const ctzn = { country, citizens: [] };
+    for (let index = 0; index < amount; index++) {
+        const randomNumber = (isNeg=true) => {
+            let rndNumber = Math.floor(Math.random()*100);
+            return isNeg ? rndNumber * (Math.floor(Math.random()*10)%2 ? 1:-1) : rndNumber; 
+        }
+        ctzn.citizens.push(
+            new CitizenIndicator(
+                {
+                    happiness: randomNumber(),
+                    education: randomNumber(),
+                    job: randomNumber(false),
+                })
+        );
     }
-    citizens.push(
-        new CitizenIndicator(
-            {
-                happiness: randomNumber(),
-                education: randomNumber(),
-                job: randomNumber(false),
-            })
-    );
+    
+    return ctzn;
 }
